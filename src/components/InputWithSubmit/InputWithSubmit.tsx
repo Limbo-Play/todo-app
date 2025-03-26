@@ -9,11 +9,7 @@ interface InputWithSubmitProps {
   text: string;
 }
 
-const InputWithSubmit = ({
-  isDone,
-  text,
-  onSubmit = () => {},
-}: InputWithSubmitProps) => {
+const InputWithSubmit = ({ isDone, text, onSubmit }: InputWithSubmitProps) => {
   const [isSubmitVisible, setIsSubmitVisible] = useState(false);
   const [value, setValue] = useState(text);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -27,6 +23,10 @@ const InputWithSubmit = ({
 
   const onClickSubmit = () => {
     if (!isSubmitVisible) return;
+    if (value === text) {
+      setIsSubmitVisible(false);
+      return;
+    }
 
     onSubmit(value);
     setIsSubmitVisible(false);
@@ -42,6 +42,7 @@ const InputWithSubmit = ({
         onChange={(e) => setValue(e.target.value)}
       />
       <IconButton
+        color="success"
         onClick={onClickSubmit}
         className={isSubmitVisible ? "" : "opacity-[0]"}
         sx={{ cursor: isSubmitVisible ? "pointer" : "default" }}

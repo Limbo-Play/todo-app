@@ -4,7 +4,7 @@ import { TTodoItem } from "../components/TodoList/TodoList";
 
 const uid = localStorage.getItem("uid");
 
-// i didn't find solution how to change only task field so i've decide to replace all todo's array
+// i didn't find solution how to change only task field in db so i've decide to replace all todo's array
 // TODO find better solution
 
 const updateTask = async (todos: TTodoItem[]) => {

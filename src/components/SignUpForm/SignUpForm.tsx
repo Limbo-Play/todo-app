@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import CustomInput from "../CustomInput/CustomInput";
 import { useSignUp } from "../../hooks/useSignUp";
 import ErrorSnackbar from "../ErrorSnackbar/ErrorSnackbar";
+import PasswordInput from "../PasswordInput/PasswordInput";
 
 const SignUpForm = () => {
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ const SignUpForm = () => {
           name="name"
           label="Name"
           variant="outlined"
+          autoComplete="none"
           error={!!errors.name?.message}
           helperText={errors.name?.message}
         />
@@ -42,11 +44,10 @@ const SignUpForm = () => {
           error={!!errors.email?.message}
           helperText={errors.email?.message}
         />
-        <CustomInput
+        <PasswordInput
           register={register}
-          type="password"
           name="password"
-          label="Create password"
+          label="Password"
           variant="outlined"
           error={!!errors.password?.message}
           helperText={errors.password?.message}

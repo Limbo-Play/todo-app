@@ -11,8 +11,6 @@ import { useEffect } from "react";
 function App() {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      console.log("userId: " + user?.uid);
-
       if (user) {
         localStorage.setItem("loggedIn", "true");
         localStorage.setItem("uid", user.uid);

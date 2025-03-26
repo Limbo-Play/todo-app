@@ -6,6 +6,7 @@ import { schemaModule } from "../../utils/shemas";
 import { useNavigate } from "react-router-dom";
 import { useLogin } from "../../hooks/useLogin";
 import ErrorSnackbar from "../ErrorSnackbar/ErrorSnackbar";
+import PasswordInput from "../PasswordInput/PasswordInput";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -33,9 +34,8 @@ const LoginForm = () => {
           error={!!errors.email?.message}
           helperText={errors.email?.message}
         />
-        <CustomInput
+        <PasswordInput
           register={register}
-          type="password"
           name="password"
           label="Password"
           variant="outlined"
