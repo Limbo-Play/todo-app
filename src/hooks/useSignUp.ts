@@ -20,8 +20,8 @@ export const useSignUp = () => {
     const { email, password } = formData;
 
     try {
-      const user = await createUserWithEmailAndPassword(auth, email, password);
-      await userActions.addUserToDB(user.user.uid);
+      const data = await createUserWithEmailAndPassword(auth, email, password);
+      await userActions.addUserToDB(data.user.uid);
 
       navigate("/todo-list");
     } catch (error: any) {
