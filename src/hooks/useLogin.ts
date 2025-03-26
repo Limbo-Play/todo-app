@@ -23,7 +23,9 @@ export const useLogin = () => {
 
     try {
       await setPersistence(auth, browserSessionPersistence);
-      await signInWithEmailAndPassword(auth, email, password);
+      const data = await signInWithEmailAndPassword(auth, email, password);
+
+      localStorage.setItem("uid", data.user.uid);
 
       navigate("/todo-list", { replace: true });
     } catch (error: any) {

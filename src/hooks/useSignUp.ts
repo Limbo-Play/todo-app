@@ -25,7 +25,7 @@ export const useSignUp = () => {
 
       navigate("/todo-list");
     } catch (error: any) {
-      console.log(error?.message);
+      console.error(error?.message);
       setSignUpError(error?.message);
     } finally {
       setIsLoading(false);

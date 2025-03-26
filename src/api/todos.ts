@@ -14,8 +14,7 @@ type TGetTodoReturnType = {
 };
 
 const getTodos = async () => {
-  const uid = auth.currentUser?.uid;
-
+  const uid = auth?.currentUser?.uid || localStorage.getItem("uid");
   const todoRef = doc(db, `users`, `${uid}`);
   const docSnap = await getDoc(todoRef);
 
@@ -25,7 +24,7 @@ const getTodos = async () => {
 };
 
 const addTodo = async (todo: TTodoItem) => {
-  const uid = auth.currentUser?.uid;
+  const uid = auth?.currentUser?.uid || localStorage.getItem("uid");
   const todoRef = doc(db, `users`, `${uid}`);
 
   await updateDoc(todoRef, {
@@ -35,8 +34,8 @@ const addTodo = async (todo: TTodoItem) => {
 
 const deleteTodo = async (todo?: TTodoItem) => {
   if (!todo) return;
+  const uid = auth?.currentUser?.uid || localStorage.getItem("uid");
 
-  const uid = auth.currentUser?.uid;
   const todoRef = doc(db, `users`, `${uid}`);
 
   await updateDoc(todoRef, {
@@ -45,8 +44,7 @@ const deleteTodo = async (todo?: TTodoItem) => {
 };
 
 const updateTodos = async (todos: TTodoItem[]) => {
-  const uid = auth.currentUser?.uid;
-
+  const uid = auth?.currentUser?.uid || localStorage.getItem("uid");
   const todoRef = doc(db, `users`, `${uid}`);
 
   await updateDoc(todoRef, {

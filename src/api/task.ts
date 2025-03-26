@@ -6,7 +6,7 @@ import { TTodoItem } from "../components/TodoList/TodoList";
 // TODO find better solution
 
 const updateTask = async (todos: TTodoItem[]) => {
-  const uid = auth?.currentUser?.uid;
+  const uid = auth?.currentUser?.uid || localStorage.getItem("uid");
   const todoRef = doc(db, `users`, `${uid}`);
 
   await updateDoc(todoRef, {
